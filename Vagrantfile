@@ -66,7 +66,8 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
-    apt-get install -y containerd.io python-pip mininet quagga quagga-bgpd openvswitch-testcontroller git
+    apt-get install -y python-pip mininet quagga quagga-bgpd openvswitch-testcontroller git
+    sudo ln /usr/bin/ovs-controller /usr/bin/controller
     pip install termcolor docker
     fuser -k 6653/tcp
     cp /usr/bin/ovs-testcontroller /usr/bin/ovs-controller
