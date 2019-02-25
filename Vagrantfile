@@ -67,9 +67,11 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
     apt-get install -y python-pip mininet quagga quagga-bgpd openvswitch-testcontroller git
-    pip install termcolor
+    pip install termcolor docker
     fuser -k 6653/tcp
     cp /usr/bin/ovs-testcontroller /usr/bin/ovs-controller
-    cd /vagrant && python scripts/bgp.py
+    cd /vagrant
+    git clone https://github.com/elmjay16/containernet.git
+    cd /vagrant/containernet && python setup.py install
   SHELL
 end
