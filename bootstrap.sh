@@ -14,4 +14,3 @@ docker build . -f Dockerfile.host --tag=h
 
 # run Docker host with curl command
 docker run --name host --network foo -it h server:8080
-
