@@ -67,12 +67,20 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
     apt-get install -y python-pip mininet quagga quagga-bgpd openvswitch-testcontroller git
-    sudo ln /usr/bin/ovs-controller /usr/bin/controller
+
     pip install termcolor docker
     fuser -k 6653/tcp
     cp /usr/bin/ovs-testcontroller /usr/bin/ovs-controller
+    sudo ln /usr/bin/ovs-controller /usr/bin/controller
+    
     cd /vagrant
     git clone https://github.com/elmjay16/containernet.git
+    
+    # mininet installer relies upon symlinks which are disabled in the
+    # vagrant shared folder, moving affected files    
+    rm -rf /vagrant/containernet/mininet/examples
+    cp -r /vagrant/containernet/examples /vagrant/containernet/mininet/examples
+
     cd /vagrant/containernet && python setup.py install
     apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
