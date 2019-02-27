@@ -12,11 +12,11 @@ peers.
 HOST --- ROUTING --- WEB_SERVER
 
 ## Emulated Network Topology
-
+```
 HOST --- R1 --- R2 --- WEB_SERVER
      	  | 	 |
 	  ---R3---
-
+```
 R1, R2, R3 are eBGP peers emulated using Mininet.
 
 ## Addressing
