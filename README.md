@@ -48,8 +48,9 @@ virtual ethernet (`veth`) pairs. Mininet also integrates OpenFlow to enable
 highly flexible custom routing and Software-Defined Networking (SDN).
 It also installs and configures the OpenVSwitch Controller to enable Mininet.
 
--It clones and installs our fork of the Containernet git repository.
--It sets up Docker.
+- It clones and installs our fork of the Containernet git repository.
+
+- It sets up Docker.
 
 To complete the exercise, perform the following tasks.
 1) Write a Dockerfile that can retrieve content from a webserver.
