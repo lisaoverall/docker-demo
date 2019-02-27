@@ -1,6 +1,6 @@
 containernet/
-
 .vagrant/
+logs/
 
 *~
 \#*\#
